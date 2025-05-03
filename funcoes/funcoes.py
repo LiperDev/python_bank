@@ -1,6 +1,10 @@
+from funcoes.time import esperar_tempo_curto
+
 saldo = 0
 avaliacoes = []
 transferidos = []
+contador_valor_depositado = 0
+contador_valor_sacado = 0
 contador_valor_transferido = 0
 
 def exibir_boas_vindas():
@@ -36,21 +40,33 @@ def verificar_saldo():
 
 def deposita_valor(valor):
     global saldo
+    global contador_valor_depositado
 
     if valor <= 0:
         print("Valor impossível de transferir!")
     else:
         saldo = saldo + valor
-        print("Valor depositado com sucesso!")
+        contador_valor_depositado = contador_valor_depositado + 1
+        print(contador_valor_depositado, ": depósito bem sucedido!")
+        esperar_tempo_curto()
+        print("você depositou: R$", valor)
+        esperar_tempo_curto()
+        print("saldo atual: R$", saldo)
 
 def sacar_valor(valor):
     global saldo
+    global contador_valor_sacado
 
     if valor > saldo:
         print("Saldo insuficiente!")
     else:
         saldo = saldo - valor
-        print("Valor sacado com sucesso!")
+        contador_valor_sacado = contador_valor_sacado + 1
+        print(contador_valor_sacado, ": saque bem sucedido!")
+        esperar_tempo_curto()
+        print("você sacou: R$", valor)
+        esperar_tempo_curto()
+        print("saldo atual: R$", saldo)
 
 def transferir_um_valor(valor):
     global saldo
@@ -64,12 +80,16 @@ def transferir_um_valor(valor):
         exibir_valores_transferidos()
         contador_valor_transferido = contador_valor_transferido + 1
         print(contador_valor_transferido, ": transferência bem sucedida!")
+        esperar_tempo_curto()
+        print("você transferiu: R$", valor)
+        esperar_tempo_curto()
+        print("saldo atual: R$", saldo)
 
 def valores_validos_avaliacao():
     print("Por favor, digite um valor de 1 a 10")
 
 def avaliar_aplicativo(valor):
-    if valor <= 0:
+    if valor <= 0 or valor > 10:
         print("Valor inválido!")
         valores_validos_avaliacao()
 
