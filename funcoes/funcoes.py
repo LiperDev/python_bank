@@ -1,5 +1,7 @@
 saldo = 0
 avaliacoes = []
+transferidos = []
+contador_valor_transferido = 0
 
 def exibir_boas_vindas():
     print("Seja bem-vindo(a) à sua conta bancária!")
@@ -52,12 +54,16 @@ def sacar_valor(valor):
 
 def transferir_um_valor(valor):
     global saldo
+    global contador_valor_transferido
 
     if valor > saldo:
         print("Saldo insuficiente!")
     else:
         saldo = saldo - valor
-        print("Transferência bem sucedida!")
+        transferidos.append(valor)
+        exibir_valores_transferidos()
+        contador_valor_transferido = contador_valor_transferido + 1
+        print(contador_valor_transferido, ": transferência bem sucedida!")
 
 def valores_validos_avaliacao():
     print("Por favor, digite um valor de 1 a 10")
@@ -72,3 +78,8 @@ def avaliar_aplicativo(valor):
         soma = sum(avaliacoes)
         media = soma / len(avaliacoes)
         print("Média das avaliações: ", media)
+
+
+def exibir_valores_transferidos():
+    print("Exibindo valores transferidos... ")
+    print(transferidos)
