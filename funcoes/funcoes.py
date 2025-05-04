@@ -1,4 +1,4 @@
-from funcoes.time import esperar_tempo_curto
+from funcoes.time import *
 
 saldo = 0
 avaliacoes = []
@@ -48,9 +48,9 @@ def deposita_valor(valor):
         saldo = saldo + valor
         contador_valor_depositado = contador_valor_depositado + 1
         print(contador_valor_depositado, ": depósito bem sucedido!")
-        esperar_tempo_curto()
+        temporizador(1)
         print("você depositou: R$", valor)
-        esperar_tempo_curto()
+        temporizador(1)
         print("saldo atual: R$", saldo)
 
 def sacar_valor(valor):
@@ -63,9 +63,9 @@ def sacar_valor(valor):
         saldo = saldo - valor
         contador_valor_sacado = contador_valor_sacado + 1
         print(contador_valor_sacado, ": saque bem sucedido!")
-        esperar_tempo_curto()
+        temporizador(1)
         print("você sacou: R$", valor)
-        esperar_tempo_curto()
+        temporizador(1)
         print("saldo atual: R$", saldo)
 
 def transferir_um_valor(valor):
@@ -80,9 +80,9 @@ def transferir_um_valor(valor):
         exibir_valores_transferidos()
         contador_valor_transferido = contador_valor_transferido + 1
         print(contador_valor_transferido, ": transferência bem sucedida!")
-        esperar_tempo_curto()
+        temporizador(1)
         print("você transferiu: R$", valor)
-        esperar_tempo_curto()
+        temporizador(1)
         print("saldo atual: R$", saldo)
 
 def valores_validos_avaliacao():
